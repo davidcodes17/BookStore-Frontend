@@ -1,16 +1,12 @@
-import { Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import NotFound from "./pages/NotFound";
-import Dashboard from "./pages/Dashboard";
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Login />}></Route>
-      <Route path="*" element={<NotFound />}></Route>
-      <Route path="/dashboard" element={<Dashboard />}></Route>
+      <Route path={"/"} element={<Home />}></Route>
     </Routes>
-  );
-};
+  )
+}
 
-export default App;
+export default App
