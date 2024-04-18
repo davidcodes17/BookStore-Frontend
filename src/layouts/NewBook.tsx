@@ -10,9 +10,10 @@ import {
   Heading,
   Input,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
-import { RiRestartFill } from "react-icons/ri";
-
+import { Back } from "iconsax-react";
+import { Link } from "react-router-dom";
 interface Book {
   id: string;
   title: string;
@@ -22,6 +23,7 @@ interface Book {
 
 const NewBook = () => {
   const addBook = useBooks();
+  const toast = useToast();
   const [book, setBook] = useState<Book>({
     id : '',
     title : '',
@@ -55,9 +57,16 @@ const NewBook = () => {
           <FormErrorMessage>Hello Error</FormErrorMessage>
         </FormControl>
         <Flex gap={10} mt={5}>
-          <Button width={"100%"} py={7} borderRadius={10} leftIcon={<RiRestartFill size={30} />} >Reset</Button>
+          <Button width={"100%"} py={7} as={Link} to={"/books"} borderRadius={10} leftIcon={<Back size={30} />} >Back</Button>
           <Button width={"100%"} py={7} onClick={()=>{
             addBook.addBook(book);
+            toast({
+                title: "Book Updated Successfully.",
+                description: "We've updated your book",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+              });
           }} borderRadius={10}>Save Book</Button>
         </Flex>
       </Box>

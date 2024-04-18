@@ -14,7 +14,7 @@ interface Book {
 const BookCards = () => {
   const books = useBooks();
   return (
-    <Box>
+    <Box pt={10}>
       <Flex justifyContent={"space-between"} flexWrap={"wrap"} gap={10}>
         {books.books.map((book: Book) => (
           <Book

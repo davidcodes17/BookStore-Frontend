@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Text } from "@chakra-ui/react";
 
 const Dashboard = () => {
   return (
@@ -10,6 +10,10 @@ const Dashboard = () => {
         laborum voluptatem assumenda cum molestias, placeat aspernatur.
         Blanditiis ipsam ipsum cupiditate!
       </Text>
+      <Flex alignItems={"center"} justifyContent={"space-between"}>
+        <Image src="/mock.svg" width={500} />
+        <Image src="/hand.svg" width={500} />
+      </Flex>
     </Box>
   );
 };

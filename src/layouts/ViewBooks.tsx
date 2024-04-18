@@ -6,7 +6,7 @@ const ViewBooks = () => {
   return (
     <Box p={20} ml={300} width={"100%"}>
       <Heading>View Books</Heading>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <BookCards />
     </Box>
   );

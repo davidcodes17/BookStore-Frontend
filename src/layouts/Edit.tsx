@@ -3,6 +3,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  useToast,
   FormErrorMessage,
   Textarea,
   Flex,
@@ -10,9 +11,9 @@ import {
   Box,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { RiRestartFill } from "react-icons/ri";
 import { useBooks } from "../contexts/bookContext";
-import { Trash } from "iconsax-react";
+import { Back, Trash } from "iconsax-react";
+import { Link } from "react-router-dom";
 
 interface Book {
   id: string;
@@ -22,6 +23,7 @@ interface Book {
 }
 
 const Edit = ({ id }: { id: any }) => {
+  const toast = useToast();
   const [book, setBook] = useState<Book>({
     id: "",
     title: "",
@@ -81,25 +83,28 @@ const Edit = ({ id }: { id: any }) => {
           <Button
             width={"100%"}
             py={7}
-            onClick={() => {
-              setBook({
-                id: id,
-                author: "",
-                bookContent: "",
-                title: "",
-              });
-            }}
+            as={Link}
+            to={"/books"}
             borderRadius={10}
-            leftIcon={<RiRestartFill size={30} />}
+            leftIcon={<Back size={30} />}
           >
-            Reset
+            Back
           </Button>
           <Button
             width={"100%"}
             py={7}
+            as={Link}
+            to={"/books"}
             leftIcon={<Trash variant="Bold" />}
             onClick={() => {
               editBook.deleteBook(id);
+              toast({
+                title: "Book Deleted Successfully.",
+                description: "We've deleted your book",
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+              });
             }}
             borderRadius={10}
           >
@@ -110,6 +115,13 @@ const Edit = ({ id }: { id: any }) => {
             py={7}
             onClick={() => {
               editBook.editBook(book, id);
+              toast({
+                title: "Book Updated Successfully.",
+                description: "We've updated your book",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+              });
             }}
             borderRadius={10}
           >
