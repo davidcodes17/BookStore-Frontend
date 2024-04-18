@@ -1,5 +1,5 @@
 import { Box, Heading } from "@chakra-ui/react";
-import SearchBar from "../components/SearchBar";
+// import SearchBar from "../components/SearchBar";
 import BookCards from "../components/BookCards";
 
 const ViewBooks = () => {
